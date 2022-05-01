@@ -86,4 +86,7 @@ elif dpdk_conf.has('RTE_ARCH_ARM')
     sources += files('acl_run_neon.c')
 elif dpdk_conf.has('RTE_ARCH_PPC_64')
     sources += files('acl_run_altivec.c')
+elif dpdk_conf.has('RTE_ARCH_S390X')
+# *FIXME* optimization is for part2
+#   sources += files('acl_run_s390x_vec.c')
 endif
