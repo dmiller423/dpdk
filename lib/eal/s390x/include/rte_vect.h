@@ -12,6 +12,8 @@
 extern "C" {
 #endif
 
+#define RTE_VECT_DEFAULT_SIMD_BITWIDTH RTE_VECT_SIMD_256
+
 typedef int xmm_t __attribute__((vector_size(4*sizeof(int))));
 
 #define	XMM_SIZE	(sizeof(xmm_t))

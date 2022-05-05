@@ -25,7 +25,7 @@
  * e.g.: key size = 4, key = 0x03020100
  *       key size = 8, key = 0x0706050403020100
  */
-+#if !defined(RTE_ARCH_S390X)
+#if !defined(RTE_ARCH_S390X)
 static uint32_t hash_values_jhash[2][12] = {{
 	0x8ba9414b, 0xdf0d39c9,
 	0xe4cf1d42, 0xd4ccb93c, 0x5e84eafc, 0x21362cfe,

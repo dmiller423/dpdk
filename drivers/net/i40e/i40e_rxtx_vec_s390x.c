@@ -5,7 +5,7 @@
 
 #include <stdint.h>
 #include <vecintrin.h>
-#include <rte_ethdev_driver.h>
+#include <ethdev_driver.h>
 #include <rte_malloc.h>
 
 #include "base/i40e_prototype.h"
@@ -136,16 +136,16 @@ desc_to_olflags_v(vector_unsigned_long_long descs[4], struct rte_mbuf **rx_pkts)
 			0, 0, 0, 0,
 			0, 0, 0, 0};
 
+	/* release_21_11.rst:419:* mbuf: Removed offload flag PKT_RX_EIP_CKSUM_BAD */
 	const vector_unsigned_char l3_l4e_flags = (vector_unsigned_char){
 			0,
 			PKT_RX_IP_CKSUM_BAD,
 			PKT_RX_L4_CKSUM_BAD,
 			PKT_RX_L4_CKSUM_BAD | PKT_RX_IP_CKSUM_BAD,
-			PKT_RX_EIP_CKSUM_BAD,
-			PKT_RX_EIP_CKSUM_BAD | PKT_RX_IP_CKSUM_BAD,
-			PKT_RX_EIP_CKSUM_BAD | PKT_RX_L4_CKSUM_BAD,
-			PKT_RX_EIP_CKSUM_BAD | PKT_RX_L4_CKSUM_BAD
-					     | PKT_RX_IP_CKSUM_BAD,
+			PKT_RX_IP_CKSUM_BAD,
+			PKT_RX_IP_CKSUM_BAD, 
+			PKT_RX_IP_CKSUM_BAD | PKT_RX_L4_CKSUM_BAD,
+			PKT_RX_IP_CKSUM_BAD | PKT_RX_L4_CKSUM_BAD,
 			0, 0, 0, 0, 0, 0, 0, 0};
 
 	vlan0 = (vector_unsigned_int)vec_mergel(descs[0], descs[1]);

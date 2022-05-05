@@ -18,6 +18,7 @@ extern "C" {
 #include <unistd.h>
 #include <sys/syscall.h>
 
+typedef
 union register_pair {
 	__int128_t pair;
 	struct {
@@ -167,11 +168,24 @@ rte_write32(uint32_t value, volatile void *addr)
 }
 
 static __rte_always_inline void
+rte_write32_wc(uint32_t value, volatile void *addr)
+{
+    rte_write32(value, addr);
+}
+
+static __rte_always_inline void
 rte_write64(uint64_t value, volatile void *addr)
 {
 	rte_io_wmb();
 	rte_write64_relaxed(value, addr);
 }
+
+static __rte_always_inline void
+rte_write32_wc_relaxed(uint32_t value, volatile void *addr)
+{
+	rte_write32_relaxed(value, addr);
+}
+
 
 #ifdef __cplusplus
 }

@@ -11,6 +11,7 @@ install_headers(
 	'rte_memcpy.h',
 	'rte_pause.h',
 	'rte_prefetch.h',
+        'rte_pflock.h',
 	'rte_rwlock.h',
 	'rte_spinlock.h',
 	'rte_vect.h',
