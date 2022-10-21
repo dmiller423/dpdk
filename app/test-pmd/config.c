@@ -246,7 +246,7 @@ nic_stats_display(portid_t port_id)
 	static uint64_t prev_ns[RTE_MAX_ETHPORTS];
 	struct timespec cur_time;
     __uint128_t diff_pkts_rx, diff_pkts_tx, diff_bytes_rx, diff_bytes_tx,
-            diff_cycles;
+            diff_ns;
     __uint128_t mpps_rx, mpps_tx, mbps_rx, mbps_tx;
 	struct rte_eth_stats stats;
 

@@ -8,6 +8,7 @@
 #include <fcntl.h>
 #include <assert.h>
 #include <unistd.h>
+#include <string.h>
 
 /* Symbolic values for the entries in the auxiliary table */
 #define AT_HWCAP  16

@@ -24,7 +24,7 @@ union register_pair {
 		unsigned long even;
 		unsigned long odd;
 	} even_odd;
-} register_pair;
+};
 
 /* s390 requires special instructions to access IO memory. */
 static inline uint64_t pcilgi(const volatile void *ioaddr, size_t len)
@@ -34,7 +34,6 @@ static inline uint64_t pcilgi(const volatile void *ioaddr, size_t len)
 	uint64_t val;
 	int cc = -1;
 
-	/* FIXME: error reporting? */
 	asm volatile (
 		"       .insn   rre,0xb9d60000,%[val],%[ioaddr_len]\n"
 		"       ipm     %[cc]\n"
@@ -50,7 +49,6 @@ static inline void pcistgi(volatile void *ioaddr, uint64_t val, size_t len)
                 {.even_odd.even = (uint64_t)ioaddr, .even_odd.odd = len};
 	int cc = -1;
 
-	/* FIXME: error reporting? */
 	asm volatile (
 		"       .insn   rre,0xb9d40000,%[val],%[ioaddr_len]\n"
 		"       ipm     %[cc]\n"
@@ -60,7 +58,7 @@ static inline void pcistgi(volatile void *ioaddr, uint64_t val, size_t len)
 		: "cc", "memory");
 }
 
-/* TODO fall back to syscall on old machines */
+/* fall back to syscall on old machines ? */
 static __rte_always_inline uint8_t
 rte_read8_relaxed(const volatile void *addr)
 {
@@ -164,6 +162,12 @@ rte_write32(uint32_t value, volatile void *addr)
 {
 	rte_io_wmb();
 	rte_write32_relaxed(value, addr);
+}
+
+static __rte_always_inline void
+rte_write32_wc(uint32_t value, volatile void *addr)
+{
+    rte_write32(value, addr);
 }
 
 static __rte_always_inline void

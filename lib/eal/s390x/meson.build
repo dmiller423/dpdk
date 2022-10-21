@@ -11,6 +11,7 @@ sources += files(
         'rte_cpuflags.c',
         'rte_cycles.c',
         'rte_hypervisor.c',
+        'rte_power_intrinsics.c',
 )
 
 

@@ -325,14 +325,16 @@ rxq_cq_to_pkt_type(struct mlx5_rxq_data *rxq, volatile struct mlx5_cqe *cqe,
      * to be converted from LE to BE for the logic to work
     */
     uint16_t cqe_t_le  = rte_le_to_cpu_16(cqe->hdr_type_etc);
-    uint16_t mcqe_t_le = rte_le_to_cpu_16(mcqe->hdr_type);
+    uint16_t mcqe_t_le;
 
 	/* Get l3/l4 header from mini-CQE in case L3/L4 format*/
 	if (mcqe == NULL ||
 	    rxq->mcqe_format != MLX5_CQE_RESP_FORMAT_L34H_STRIDX)
 		ptype = (cqe_t_le & 0xfc00) >> 10;
-	else
+	else {
+        mcqe_t_le = rte_le_to_cpu_16(mcqe->hdr_type);
 		ptype = mcqe_t_le >> 2;
+    }
 	/*
 	 * The index to the array should have:
 	 * bit[1:0] = l3_hdr_type
