@@ -14,7 +14,7 @@
 #include "test_cmdline.h"
 
 #if RTE_BYTE_ORDER == RTE_LITTLE_ENDIAN
-#define IP4(a,b,c,d) {.s_addr = (uint32_t)(((a) & 0xff) | \
+#define IP4(a, b, c, d) {.s_addr = (uint32_t)(((a) & 0xff) | \
 					   (((b) & 0xff) << 8) | \
 					   (((c) & 0xff) << 16)  | \
 					   ((d) & 0xff)  << 24)}
@@ -28,7 +28,6 @@
 					   ((d) & 0xff))}
 
 #define U16_SWAP(x) x
-
 #endif
 
 /* create IPv6 address, swapping bytes where needed */

@@ -156,15 +156,15 @@ acl_check_alg_ppc(enum rte_acl_classify_alg alg)
 static int
 acl_check_alg_s390x(enum rte_acl_classify_alg alg)
 {
-    if (alg == RTE_ACL_CLASSIFY_S390X) {
+	if (alg == RTE_ACL_CLASSIFY_S390X) {
 #if defined(RTE_ARCH_S390X)
-        if (rte_vect_get_max_simd_bitwidth() >= RTE_VECT_SIMD_128) 
+		if (rte_vect_get_max_simd_bitwidth() >= RTE_VECT_SIMD_128)
 			return 0;
 #endif
-        return -ENOTSUP;
-    }
+		return -ENOTSUP;
+	}
 
-    return -EINVAL;
+	return -EINVAL;
 }
 
 
@@ -239,8 +239,8 @@ acl_check_alg(enum rte_acl_classify_alg alg)
 		return acl_check_alg_arm(alg);
 	case RTE_ACL_CLASSIFY_ALTIVEC:
 		return acl_check_alg_ppc(alg);
-    case RTE_ACL_CLASSIFY_S390X:
-        return acl_check_alg_s390x(alg);
+	case RTE_ACL_CLASSIFY_S390X:
+		return acl_check_alg_s390x(alg);
 	case RTE_ACL_CLASSIFY_AVX512X32:
 	case RTE_ACL_CLASSIFY_AVX512X16:
 	case RTE_ACL_CLASSIFY_AVX2:
@@ -270,7 +270,7 @@ acl_get_best_alg(void)
 #elif defined(RTE_ARCH_PPC_64)
 		RTE_ACL_CLASSIFY_ALTIVEC,
 #elif defined(RTE_ARCH_S390X)
-        RTE_ACL_CLASSIFY_S390X,
+		RTE_ACL_CLASSIFY_S390X,
 #elif defined(RTE_ARCH_X86)
 		RTE_ACL_CLASSIFY_AVX512X32,
 		RTE_ACL_CLASSIFY_AVX512X16,

@@ -36,7 +36,7 @@ static inline void rte_prefetch_non_temporal(const volatile void *p)
 __rte_experimental
 static inline void rte_cldemote(const volatile void *p)
 {
-    RTE_SET_USED(p);
+	RTE_SET_USED(p);
 }
 
 #ifdef __cplusplus

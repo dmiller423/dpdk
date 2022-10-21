@@ -15,10 +15,7 @@ extern "C" {
 
 #include "generic/rte_atomic.h"
 
-//#define dsb(opt) asm volatile("" : : : "memory")
-//#define dmb(opt) asm volatile("" : : : "memory")
-
-#define rte_mb() rte_compiler_barrier() //asm volatile("" : : : "memory")
+#define rte_mb() rte_compiler_barrier()
 
 #define rte_wmb() rte_mb()
 

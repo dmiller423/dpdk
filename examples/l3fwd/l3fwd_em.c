@@ -262,6 +262,7 @@ em_mask_key(void *key, xmm_t mask)
 	xmm_t data = vect_load_128(key);
 
 	return vect_and(data, mask);
+}
 #else
 #error No vector engine (SSE, NEON, ALTIVEC) available, check your toolchain
 #endif
