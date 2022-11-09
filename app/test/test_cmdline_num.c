@@ -440,46 +440,46 @@ test_parse_num_valid(void)
 			 * since unsigned numbers don't care about number of bits, we can just convert
 			 * everything to uint64_t without any worries. */
 #if RTE_BYTE_ORDER == RTE_BIG_ENDIAN
-            switch (type) {
-                case RTE_UINT8:
-                {
-                    uint8_t *temp = (uint8_t *)&result;
-                    result = *temp;
-                    break;
-                }
-                case RTE_UINT16:
-                {
-                    uint16_t *temp = (uint16_t *)&result;
-                    result = *temp;
-                    break;
-                }
-                case RTE_UINT32:
-                {
-                    uint32_t *temp = (uint32_t *)&result;
-                    result = *temp;
-                    break;
-                }
-                case RTE_INT8:
-                {
-                    int8_t *temp = (int8_t *)&result;
-                    result = *temp;
-                    break;
-                }
-                case RTE_INT16:
-                {
-                    int16_t *temp = (int16_t *)&result;
-                    result = *temp;
-                    break;
-                }
-                case RTE_INT32:
-                {
-                    int32_t *temp = (int32_t *)&result;
-                    result = *temp;
-                    break;
-                }
-                default:
-                    break;
-            }
+			switch (type) {
+			case RTE_UINT8:
+			{
+				uint8_t *temp = (uint8_t *)&result;
+				result = *temp;
+				break;
+			}
+			case RTE_UINT16:
+			{
+				uint16_t *temp = (uint16_t *)&result;
+				result = *temp;
+				break;
+			}
+			case RTE_UINT32:
+			{
+				uint32_t *temp = (uint32_t *)&result;
+				result = *temp;
+				break;
+			}
+			case RTE_INT8:
+			{
+				int8_t *temp = (int8_t *)&result;
+				result = *temp;
+				break;
+			}
+			case RTE_INT16:
+			{
+				int16_t *temp = (int16_t *)&result;
+				result = *temp;
+				break;
+			}
+			case RTE_INT32:
+			{
+				int32_t *temp = (int32_t *)&result;
+				result = *temp;
+				break;
+			}
+			default:
+				break;
+			}
 #endif
 			if (ret > 0 && num_valid_positive_strs[i].result != result) {
 				printf("Error: parsing %s as %s failed: result mismatch!\n",
@@ -525,7 +525,7 @@ test_parse_num_valid(void)
 					break;
 				}
 #else
-                switch (type) {
+				switch (type) {
 				case RTE_INT8:
 				{
 					int8_t *temp = (int8_t *)&result;
@@ -585,46 +585,46 @@ test_parse_num_valid(void)
 			 * since unsigned numbers don't care about number of bits, we can just convert
 			 * everything to uint64_t without any worries. */
 #if RTE_BYTE_ORDER == RTE_BIG_ENDIAN
-            switch (type) {
-                case RTE_UINT8:
-                {
-                    uint8_t *temp = (uint8_t *)&result;
-                    result = *temp;
-                    break;
-                }
-                case RTE_UINT16:
-                {
-                    uint16_t *temp = (uint16_t *)&result;
-                    result = *temp;
-                    break;
-                }
-                case RTE_UINT32:
-                {
-                    uint32_t *temp = (uint32_t *)&result;
-                    result = *temp;
-                    break;
-                }
-                case RTE_INT8:
-                {
-                    int8_t *temp = (int8_t *)&result;
-                    result = *temp;
-                    break;
-                }
-                case RTE_INT16:
-                {
-                    int16_t *temp = (int16_t *)&result;
-                    result = *temp;
-                    break;
-                }
-                case RTE_INT32:
-                {
-                    int32_t *temp = (int32_t *)&result;
-                    result = *temp;
-                    break;
-                }
-                default:
-                    break;
-            }
+			switch (type) {
+			case RTE_UINT8:
+			{
+				uint8_t *temp = (uint8_t *)&result;
+				result = *temp;
+				break;
+			}
+			case RTE_UINT16:
+			{
+				uint16_t *temp = (uint16_t *)&result;
+				result = *temp;
+				break;
+			}
+			case RTE_UINT32:
+			{
+				uint32_t *temp = (uint32_t *)&result;
+				result = *temp;
+				break;
+			}
+			case RTE_INT8:
+			{
+				int8_t *temp = (int8_t *)&result;
+				result = *temp;
+				break;
+			}
+			case RTE_INT16:
+			{
+				int16_t *temp = (int16_t *)&result;
+				result = *temp;
+				break;
+			}
+			case RTE_INT32:
+			{
+				int32_t *temp = (int32_t *)&result;
+				result = *temp;
+				break;
+			}
+			default:
+				break;
+			}
 #endif
 			if (ret > 0 && num_garbage_positive_strs[i].result != result) {
 				printf("Error: parsing %s as %s failed: result mismatch!\n",

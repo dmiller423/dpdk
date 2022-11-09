@@ -52,13 +52,9 @@ vect_set_epi32(int i3, int i2, int i1, int i0)
 	return data;
 }
 
-#elif defined(RTE_ARCH_RISCV)
-
-#define vect_loadu_sil128(p) vect_load_128(p)
-
 #elif defined(RTE_ARCH_S390X)
 
-/* loads the xmm_t value from address p(does not need to be 16-byte aligned)*/
+/* loads the xmm_t value from address p (does not need to be 16-byte aligned)*/
 #define vect_loadu_sil128(p) vec_xld2(0, (signed int *)p)
 
 /* sets the 4 signed 32-bit integer values and returns the xmm_t variable */
@@ -69,6 +65,11 @@ vect_set_epi32(int i3, int i2, int i1, int i0)
 
 	return data;
 }
+
+
+#elif defined(RTE_ARCH_RISCV)
+
+#define vect_loadu_sil128(p) vect_load_128(p)
 
 #elif defined(RTE_ARCH_LOONGARCH)
 
@@ -82,6 +83,7 @@ vect_set_epi32(int i3, int i2, int i1, int i0)
 
 	return data;
 }
+
 #endif
 
 #endif /* _TEST_XMMT_OPS_H_ */

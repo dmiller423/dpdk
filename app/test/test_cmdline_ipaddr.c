@@ -14,7 +14,7 @@
 #include "test_cmdline.h"
 
 #if RTE_BYTE_ORDER == RTE_LITTLE_ENDIAN
-#define IP4(a,b,c,d) {.s_addr = (uint32_t)(((a) & 0xff) | \
+#define IP4(a, b, c, d) {.s_addr = (uint32_t)(((a) & 0xff) | \
 					   (((b) & 0xff) << 8) | \
 					   (((c) & 0xff) << 16)  | \
 					   ((d) & 0xff)  << 24)}
@@ -22,7 +22,7 @@
 #define U16_SWAP(x) \
 		(((x & 0xFF) << 8) | ((x & 0xFF00) >> 8))
 #else
-#define IP4(a,b,c,d) {((uint32_t)(((a) & 0xff) << 24) | \
+#define IP4(a, b, c, d) {((uint32_t)(((a) & 0xff) << 24) | \
 					   (((b) & 0xff) << 16) | \
 					   (((c) & 0xff) << 8)  | \
 					   ((d) & 0xff))}

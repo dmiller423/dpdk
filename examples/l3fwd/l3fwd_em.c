@@ -247,6 +247,7 @@ em_mask_key(void *key, xmm_t mask)
 
 	return data + mask;
 }
+<<<<<<< HEAD
 #elif defined(RTE_ARCH_RISCV)
 static inline xmm_t
 em_mask_key(void *key, xmm_t mask)
@@ -262,6 +263,8 @@ em_mask_key(void *key, xmm_t mask)
 	xmm_t data = vect_load_128(key);
 
 	return vect_and(data, mask);
+=======
+>>>>>>> to_play_squash
 #else
 #error No vector engine (SSE, NEON, ALTIVEC) available, check your toolchain
 #endif

@@ -414,7 +414,8 @@ _recv_raw_pkts_vec(struct i40e_rx_queue *rxq, struct rte_mbuf **rx_pkts,
 			vector_unsigned_char eop_bits =
 				vec_and((vector_unsigned_char)vec_nor(staterr,
 				staterr), (vector_unsigned_char)eop_check);
-			/* the staterr values are not in order, as the count
+
+			/* the staterr values are not in order, as the
 			 * count of dd bits doesn't care. However, for end of
 			 * packet tracking, we do care, so shuffle. This also
 			 * compresses the 32-bit values to 8-bit
@@ -605,25 +606,25 @@ i40e_xmit_fixed_burst_vec(void *tx_queue, struct rte_mbuf **tx_pkts,
 	return nb_pkts;
 }
 
-void __attribute__((cold))
+void __cold
 i40e_rx_queue_release_mbufs_vec(struct i40e_rx_queue *rxq)
 {
 	_i40e_rx_queue_release_mbufs_vec(rxq);
 }
 
-int __attribute__((cold))
+int __cold
 i40e_rxq_vec_setup(struct i40e_rx_queue *rxq)
 {
 	return i40e_rxq_vec_setup_default(rxq);
 }
 
-int __attribute__((cold))
+int __cold
 i40e_txq_vec_setup(struct i40e_tx_queue __rte_unused * txq)
 {
 	return 0;
 }
 
-int __attribute__((cold))
+int __cold
 i40e_rx_vec_dev_conf_condition_check(struct rte_eth_dev *dev)
 {
 	return i40e_rx_vec_dev_conf_condition_check_default(dev);

@@ -7,8 +7,13 @@
 
 #include "l3fwd.h"
 #include "l3fwd_common.h"
+<<<<<<< HEAD
 
 #define vec_sro(a, b) vec_srb(a, (b) << 64) // Vector Shift Right by Octet
+=======
+/* Vector Shift Right by Octet */
+#define vec_sro(a, b) vec_srb(a, (b) << 64)
+>>>>>>> to_play_squash
 typedef unsigned int vector_unsigned_int
 	__attribute__((vector_size(4*sizeof(unsigned int))));
 typedef unsigned short vector_unsigned_short

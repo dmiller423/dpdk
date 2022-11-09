@@ -366,7 +366,7 @@ mlx5_doorbell_ring(struct mlx5_uar_data *uar, uint64_t val, uint32_t index,
 # ifndef RTE_MACHINE_CPUFLAG_ZARCH
 	*uar->db = val;
 # else
-    rte_write64_relaxed(val, uar->db);
+	rte_write64_relaxed(val, uar->db);
 # endif
 #else /* !RTE_ARCH_64 */
 	rte_spinlock_lock(uar->sl_p);

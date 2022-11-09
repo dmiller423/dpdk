@@ -277,9 +277,9 @@ nic_stats_display(portid_t port_id)
 	static uint64_t prev_bytes_tx[RTE_MAX_ETHPORTS];
 	static uint64_t prev_ns[RTE_MAX_ETHPORTS];
 	struct timespec cur_time;
-    __uint128_t diff_pkts_rx, diff_pkts_tx, diff_bytes_rx, diff_bytes_tx,
-            diff_ns;
-    __uint128_t mpps_rx, mpps_tx, mbps_rx, mbps_tx;
+	__uint128_t diff_pkts_rx, diff_pkts_tx, diff_bytes_rx, diff_bytes_tx,
+			diff_ns;
+	__uint128_t mpps_rx, mpps_tx, mbps_rx, mbps_tx;
 	struct rte_eth_stats stats;
 	static const char *nic_stats_border = "########################";
 	int ret;
@@ -340,9 +340,10 @@ nic_stats_display(portid_t port_id)
 		(double)diff_bytes_tx / diff_ns * NS_PER_SEC : 0;
 
 	printf("\n  Throughput (since last show)\n");
-    printf("  Rx-pps: %12llu          Rx-bps: %12llu \n  Tx-pps: %12llu          Tx-bps: %12llu \n",
-           (unsigned long long) mpps_rx, (unsigned long long) mbps_rx * 8,
-           (unsigned long long) mpps_tx, (unsigned long long) mbps_tx * 8);
+	printf("Rx-pps: %12llu          Rx-bps: %12llu\nTx-pps: %12llu          Tx-bps: %12llu\n",
+			(unsigned long long) mpps_rx, (unsigned long long) mbps_rx * 8,
+			(unsigned long long) mpps_tx, (unsigned long long) mbps_tx * 8);
+
 
 	if (xstats_display_num > 0)
 		nic_xstats_display_periodic(port_id);

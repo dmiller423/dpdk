@@ -29,10 +29,11 @@ union register_pair {
 /* s390 requires special instructions to access IO memory. */
 static inline uint64_t pcilgi(const volatile void *ioaddr, size_t len)
 {
-        union register_pair ioaddr_len =
-                {.even_odd.even = (uint64_t)ioaddr, .even_odd.odd = len};
-	uint64_t val;
 	int cc = -1;
+	uint64_t val;
+	union register_pair ioaddr_len = {
+		.even_odd.even = (uint64_t)ioaddr, .even_odd.odd = len
+	};
 
 	asm volatile (
 		"       .insn   rre,0xb9d60000,%[val],%[ioaddr_len]\n"
@@ -45,9 +46,10 @@ static inline uint64_t pcilgi(const volatile void *ioaddr, size_t len)
 
 static inline void pcistgi(volatile void *ioaddr, uint64_t val, size_t len)
 {
-        union register_pair ioaddr_len =
-                {.even_odd.even = (uint64_t)ioaddr, .even_odd.odd = len};
 	int cc = -1;
+	union register_pair ioaddr_len = {
+		.even_odd.even = (uint64_t)ioaddr, .even_odd.odd = len
+	};
 
 	asm volatile (
 		"       .insn   rre,0xb9d40000,%[val],%[ioaddr_len]\n"
@@ -167,7 +169,7 @@ rte_write32(uint32_t value, volatile void *addr)
 static __rte_always_inline void
 rte_write32_wc(uint32_t value, volatile void *addr)
 {
-    rte_write32(value, addr);
+	rte_write32(value, addr);
 }
 
 static __rte_always_inline void
